@@ -1,91 +1,105 @@
 /* ==========================================================================
-   ODDHERS — Design tokens
-   Fuente única de verdad para color, tipografía, espacio y movimiento.
+   ODDHERS — Design tokens (v2: negro, escala de grises y verde eléctrico)
+   Fuente única de verdad para color, tipografía, espacio, radios y movimiento.
    ========================================================================== */
 :root {
-  /* Color: los tres oficiales y sus variaciones tonales */
-  --navy: #122046;
-  --navy-950: #0a1330;
-  --navy-900: #0d1838;
-  --navy-700: #17285a;
-  --navy-500: #2b3f7a;
+  /* Color */
+  --black: #050505;
+  --ink: #0b0b0b;
+  --g-900: #111111;
+  --g-850: #161616;
+  --g-800: #1c1c1c;
+  --g-700: #262626;
+  --g-600: #343434;
+  --g-500: #4d4d4d;
+  --g-400: #7a7a7a;
+  --g-300: #a3a3a3;
+  --g-200: #cfcfcf;
+  --g-100: #e8e8e4;
+  --white: #f5f5f0;
   --lime: #c8ff3d;
   --lime-700: #a5d927;
-  --bone: #f5f5f0;
-  --bone-200: #ebebe3;
-  --bone-300: #dcdcd2;
   --danger: #ff8a7a;
   --danger-on-light: #a3261a;
 
+  /* Alias heredados (los usan el tablero y algunos componentes) */
+  --navy: var(--ink);
+  --navy-950: var(--black);
+  --navy-900: var(--g-900);
+  --navy-700: var(--g-800);
+  --navy-500: var(--g-600);
+  --bone: var(--white);
+
   /* Tipografía */
   --font-sans: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 
-  --fs-display: clamp(2.5rem, 1.1rem + 5.4vw, 6.25rem);
-  --fs-h1: clamp(2rem, 1.1rem + 3.4vw, 4.25rem);
-  --fs-h2: clamp(1.45rem, 1.05rem + 1.5vw, 2.4rem);
-  --fs-h3: clamp(1.125rem, 1rem + 0.45vw, 1.4rem);
-  --fs-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --fs-display: clamp(2.1rem, 0.9rem + 4.6vw, 5.5rem);
+  --fs-h1: clamp(1.75rem, 1rem + 2.9vw, 3.75rem);
+  --fs-h2: clamp(1.35rem, 1.05rem + 1.3vw, 2.2rem);
+  --fs-h3: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
+  --fs-lead: clamp(1.02rem, 0.96rem + 0.35vw, 1.25rem);
   --fs-body: clamp(0.975rem, 0.95rem + 0.15vw, 1.0625rem);
   --fs-small: 0.875rem;
   --fs-label: 0.72rem;
 
-  /* Espacio y retícula */
+  /* Espacio, retícula y radios */
   --gutter: clamp(1.25rem, 0.6rem + 3vw, 4rem);
   --max: 1600px;
   --space-section: clamp(4.5rem, 2.5rem + 8vw, 10rem);
   --space-head: clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
-  --header-h: 72px;
+  --header-h: 76px;
+  --r-lg: clamp(18px, 2vw, 28px);
+  --r-md: 16px;
+  --r-sm: 10px;
+  --r-pill: 999px;
 
   /* Movimiento: micro 150–300 · componente 300–650 · revelación 600–1100 */
   --dur-micro: 200ms;
   --dur-comp: 520ms;
-  --dur-reveal: 900ms;
+  --dur-reveal: 950ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-knight: cubic-bezier(0.7, 0, 0.2, 1);
 }
 
-/* Temas de sección: cada sección declara data-theme y hereda estas variables */
+/* Temas de sección */
 [data-theme='dark'] {
-  --bg: var(--navy);
-  --fg: var(--bone);
-  --muted: rgba(245, 245, 240, 0.72);
-  --line: rgba(245, 245, 240, 0.16);
-  --line-strong: rgba(245, 245, 240, 0.4);
+  --bg: var(--ink);
+  --fg: var(--white);
+  --muted: rgba(245, 245, 240, 0.66);
+  --dim: var(--g-400);
+  --line: rgba(245, 245, 240, 0.13);
+  --line-strong: rgba(245, 245, 240, 0.34);
   --accent: var(--lime);
-  --surface: var(--navy-700);
+  --surface: var(--g-850);
+  --surface-2: var(--g-800);
   --cta-bg: var(--lime);
-  --cta-fg: var(--navy);
-  --cta-hover-bg: var(--bone);
+  --cta-fg: var(--black);
+  --cta-hover-bg: var(--white);
   --focus: var(--lime);
   --error: var(--danger);
   color-scheme: dark;
 }
-[data-theme='dark'][data-tone='deep'] {
-  --bg: var(--navy-950);
-  --surface: var(--navy-900);
-}
+[data-theme='dark'][data-tone='deep'] { --bg: var(--black); --surface: var(--g-900); --surface-2: var(--g-850); }
+[data-theme='dark'][data-tone='soft'] { --bg: var(--g-900); --surface: var(--g-800); --surface-2: var(--g-700); }
 [data-theme='light'] {
-  --bg: var(--bone);
-  --fg: var(--navy);
-  --muted: rgba(18, 32, 70, 0.74);
-  --line: rgba(18, 32, 70, 0.16);
-  --line-strong: rgba(18, 32, 70, 0.45);
-  --accent: var(--navy);
-  --surface: var(--bone-200);
-  --cta-bg: var(--navy);
-  --cta-fg: var(--bone);
-  --cta-hover-bg: var(--navy-500);
-  --focus: var(--navy);
+  --bg: var(--g-100);
+  --fg: var(--black);
+  --muted: rgba(5, 5, 5, 0.68);
+  --dim: var(--g-400);
+  --line: rgba(5, 5, 5, 0.14);
+  --line-strong: rgba(5, 5, 5, 0.4);
+  --accent: var(--black);
+  --surface: #dcdcd7;
+  --surface-2: #cfcfca;
+  --cta-bg: var(--black);
+  --cta-fg: var(--white);
+  --cta-hover-bg: var(--g-700);
+  --focus: var(--black);
   --error: var(--danger-on-light);
   color-scheme: light;
 }
-[data-theme='light'][data-tone='alt'] {
-  --bg: var(--bone-200);
-  --surface: var(--bone-300);
-}
 
 @media (max-width: 767px) {
-  :root { --header-h: 60px; }
+  :root { --header-h: 62px; }
 }

@@ -25,7 +25,7 @@ type Options = {
   onMove?: (index: number, total: number) => void;
 };
 
-const NAVY = 0x122046;
+const NAVY = 0x0b0b0b; // fondo (negro tinta)
 const LIME = 0xc8ff3d;
 const BONE = 0xf5f5f0;
 
@@ -74,7 +74,7 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   const pmrem = new THREE.PMREMGenerator(renderer);
   const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04);
   scene.environment = envRT.texture;
-  scene.environmentIntensity = 0.7;
+  scene.environmentIntensity = 0.9;
 
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
   const disposables: { dispose: () => void }[] = [envRT, pmrem];
@@ -89,11 +89,11 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   }
   const gridGeo = keep(new THREE.BufferGeometry());
   gridGeo.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
-  const gridMat = keep(new THREE.LineBasicMaterial({ color: 0x8ea2e0, transparent: true, opacity: 0.2 }));
+  const gridMat = keep(new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.16 }));
   scene.add(new THREE.LineSegments(gridGeo, gridMat));
 
   /* ---------- Piezas convencionales (trayectorias rectas) ---------- */
-  const pieceMat = keep(new THREE.MeshStandardMaterial({ color: 0x1d2f63, roughness: 0.55, metalness: 0.25 }));
+  const pieceMat = keep(new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.5, metalness: 0.45 }));
   const cyl = keep(new THREE.CylinderGeometry(0.27, 0.3, 0.56, 40));
   const box = keep(new THREE.BoxGeometry(0.54, 1, 0.54));
   const pieces: { geo: THREE.BufferGeometry; cell: Cell; h: number; sy?: number }[] = [
@@ -125,7 +125,7 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   }));
   const coreGeo = keep(new THREE.ExtrudeGeometry(shape, { depth: TC, bevelEnabled: false, curveSegments: 16 }));
   const bodyMat = keep(new THREE.MeshPhysicalMaterial({
-    color: 0x15244f, metalness: 0.68, roughness: 0.3, clearcoat: 0.6, clearcoatRoughness: 0.22,
+    color: 0x141414, metalness: 0.9, roughness: 0.24, clearcoat: 0.7, clearcoatRoughness: 0.18,
   }));
   const coreMat = keep(new THREE.MeshBasicMaterial({ color: LIME, toneMapped: false }));
 
@@ -141,7 +141,7 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   scene.add(knight);
 
   /* ---------- Sombra de contacto y resplandor ---------- */
-  const shadowTex = keep(radialTexture('rgba(3,7,20,.75)', 'rgba(3,7,20,0)'));
+  const shadowTex = keep(radialTexture('rgba(0,0,0,.8)', 'rgba(0,0,0,0)'));
   const glowTex = keep(radialTexture('rgba(200,255,61,.55)', 'rgba(200,255,61,0)'));
   const planeGeo = keep(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2));
   const shadowMat = keep(new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false }));
@@ -159,10 +159,10 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   key.position.set(4, 6, 6);
   const rim = new THREE.DirectionalLight(LIME, 6);
   rim.position.set(-5, 3.5, -4);
-  const rim2 = new THREE.DirectionalLight(0x9fb4ff, 2.2);
+  const rim2 = new THREE.DirectionalLight(0xffffff, 2.4);
   rim2.position.set(6, 2.5, -5);
   const under = new THREE.PointLight(LIME, 1.8, 6, 2);
-  scene.add(key, rim, rim2, under, new THREE.HemisphereLight(0x9fb4ff, NAVY, 0.5));
+  scene.add(key, rim, rim2, under, new THREE.HemisphereLight(0xffffff, NAVY, 0.45));
 
   /* ---------- Ruta lima y casilla destino ---------- */
   const stripGeo = keep(new THREE.PlaneGeometry(1, 0.075).rotateX(-Math.PI / 2).translate(0.5, 0, 0));
@@ -214,6 +214,7 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
   const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
   const pose = { tilt: 0, squash: 1 };
   let portrait = false;
+  let narrow = false;
 
   function place() {
     knight.position.copy(pos);
@@ -232,7 +233,7 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
     focus.x += (pos.x - focus.x) * 0.045;
     focus.z += (pos.z - focus.z) * 0.045;
 
-    const dist = portrait ? 1.08 : 1;
+    const dist = portrait ? 1.08 : narrow ? 1 : 1.16;
     camera.position.set(
       focus.x + (3.1 + pointer.x * 0.5) * dist,
       focus.y + (1.9 - pointer.y * 0.3) * dist,
@@ -313,12 +314,13 @@ export function createKnightScene(canvas: HTMLCanvasElement, { reduced, onMove }
     const w = canvas.clientWidth || 1;
     const h = canvas.clientHeight || 1;
     portrait = w / h < 0.95;
+    narrow = w < 768;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, portrait ? 1.5 : 1.75));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     // Desplaza el encuadre: caballo a la derecha en escritorio, centrado y abajo en móvil.
     if (portrait || w < 768) camera.setViewOffset(w, h, 0, -h * 0.07, w, h);
-    else camera.setViewOffset(w, h, -w * 0.26, -h * 0.03, w, h);
+    else camera.setViewOffset(w, h, -w * 0.24, h * 0.04, w, h);
     camera.updateProjectionMatrix();
     if (!running) renderOnce();
   }

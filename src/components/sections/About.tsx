@@ -1,6 +1,7 @@
 import { asset } from '@/config/site';
 import { Cta } from '@/components/ui/Cta';
 import { Words } from '@/components/ui/Words';
+import { Media } from '@/components/ui/Media';
 
 export function NameOrigin() {
   return (
@@ -23,7 +24,7 @@ export function NameOrigin() {
 
 export function About() {
   return (
-    <section className="section about" data-theme="light" aria-labelledby="nosotros-title">
+    <section className="section about" data-theme="dark" data-tone="soft" aria-labelledby="nosotros-title">
       <div className="container about__grid">
         <div className="about__main">
           <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> 08 — Sobre ODDHERS</p>
@@ -41,8 +42,9 @@ export function About() {
           <NameOrigin />
           <div data-reveal="up"><Cta href="/nosotros" variant="ghost">Conoce ODDHERS</Cta></div>
         </div>
-        <div className="about__seal" data-reveal="up">
-          <img src={asset('/brand/oddhers-sello.png')} alt="Sello de ODDHERS: caballo de ajedrez con la leyenda Jake Mate. Otras ideas. Otra estrategia." width={610} height={610} loading="lazy" />
+        <div className="about__visual">
+          <Media name="team" ratio="4 / 5" decorative />
+          <img className="about__seal" data-spin="" src={asset('/brand/oddhers-sello.png')} alt="Sello de ODDHERS: caballo de ajedrez con la leyenda Jake Mate. Otras ideas. Otra estrategia." width={610} height={610} loading="lazy" />
         </div>
       </div>
     </section>

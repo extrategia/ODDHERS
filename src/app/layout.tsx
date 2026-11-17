@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import '@fontsource-variable/archivo/wdth.css';
-import '@fontsource/instrument-serif/400.css';
-import '@fontsource/instrument-serif/400-italic.css';
 import '@/styles/tokens.css';
 import '@/styles/base.css';
 import '@/styles/components.css';
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = { themeColor: '#122046', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#0b0b0b', width: 'device-width', initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

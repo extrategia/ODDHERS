@@ -17,7 +17,7 @@ export default function ProyectosPage() {
         title="Las ideas importan. _Lo que logran, más._"
         lead="Estas son las industrias en las que hemos trabajado desde nuestra etapa como ExtrategIA. Publicamos nombres, piezas y cifras únicamente con autorización de cada cliente."
       />
-      <section className="section work" data-theme="dark" data-tone="deep">
+      <section className="section" data-theme="dark" data-tone="deep">
         <div className="container">
           <ProjectGrid />
         </div>

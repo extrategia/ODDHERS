@@ -11,16 +11,25 @@ Sitio multipágina con una homepage narrativa de 10 secciones, escena 3D del cab
 | --- | --- |
 | Next.js 16 (App Router) + React 19 + TypeScript | Arquitectura, rutas, SEO, exportación estática |
 | Three.js | Escena 3D del hero (el caballo se extruye desde la silueta del logotipo) |
-| GSAP + ScrollTrigger | Salto del caballo y animación del manifiesto ligada al scroll |
+| GSAP + ScrollTrigger | Salto del caballo, lectura del manifiesto, galería horizontal, parallax |
+| Lenis | Scroll suave (solo con mouse; se desactiva en táctil y con movimiento reducido) |
 | CSS con design tokens | Sistema visual completo, sin framework de estilos |
 
-Decisiones de mínimo necesario: **sin Tailwind, sin React Three Fiber/Drei, sin Framer Motion, sin Lenis**.
-Una sola escena 3D no justifica un wrapper; las microinteracciones son CSS; el scroll es nativo (mejor accesibilidad y rendimiento).
+Decisiones de mínimo necesario: **sin Tailwind, sin React Three Fiber/Drei, sin Framer Motion**.
+Una sola escena 3D no justifica un wrapper y las microinteracciones son CSS.
+
+## Imágenes de stock
+
+Las fotografías son provisionales (Unsplash, licencia gratuita) y están listadas en `src/content/stock.json`.
+No viven en el repositorio: `npm run stock` las descarga a `public/img/` (el despliegue lo hace solo).
+Para reemplazar una, pon tu archivo con el mismo nombre en `public/img/` y súbelo; el script respeta los archivos existentes.
+Las portadas de proyectos muestran la etiqueta "Imagen ilustrativa" mientras `illustrative: true` en `src/content/projects.ts`.
 
 ## Empezar
 
 ```bash
 npm install
+npm run stock                # descarga las fotos provisionales
 cp .env.example .env.local   # y completa los valores
 npm run dev                  # http://localhost:3000
 npm run build                # genera el sitio estático en /out

@@ -22,7 +22,7 @@ export default function AvisoPage() {
   return (
     <>
       <PageHero label="Legal" title="Aviso de privacidad" lead={`Última actualización: ${lastUpdated}.`} />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container"><div className="legal prose">
           <h2>1. Responsable</h2>
           <p>

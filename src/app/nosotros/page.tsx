@@ -3,6 +3,7 @@ import { PageHero } from '@/components/layout/PageHero';
 import { CtaBand } from '@/components/layout/CtaBand';
 import { NameOrigin } from '@/components/sections/About';
 import { asset, site } from '@/config/site';
+import { Media } from '@/components/ui/Media';
 
 export const metadata: Metadata = {
   title: 'Nosotros',
@@ -30,7 +31,7 @@ export default function NosotrosPage() {
         label="Nosotros"
         title="No empezamos con una fórmula. Empezamos con una pregunta: _¿y si existe otra manera?_"
       />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container story">
           <div className="story__text">
             <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> De ExtrategIA a ODDHERS</p>
@@ -49,8 +50,9 @@ export default function NosotrosPage() {
               </p>
             </div>
           </div>
-          <div className="story__seal" data-reveal="up">
-            <img src={asset('/brand/oddhers-sello.png')} alt="Sello de ODDHERS con el caballo de ajedrez y la leyenda Jake Mate." width={610} height={610} loading="lazy" />
+          <div className="about__visual story__visual">
+            <Media name="team" ratio="4 / 5" decorative />
+            <img className="about__seal" data-spin="" src={asset('/brand/oddhers-sello.png')} alt="Sello de ODDHERS con el caballo de ajedrez y la leyenda Jake Mate." width={610} height={610} loading="lazy" />
           </div>
         </div>
       </section>
@@ -68,7 +70,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container">
           <header className="section-head">
             <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> Equipo</p>
@@ -87,7 +89,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="section" data-theme="light" data-tone="alt">
+      <section className="section" data-theme="dark" data-tone="deep">
         <div className="container">
           <header className="section-head">
             <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> Compromiso con los clientes</p>

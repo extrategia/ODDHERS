@@ -39,6 +39,9 @@ export function Footer() {
           </ul>
         </div>
       </div>
+      <div className="container footer__mark" aria-hidden="true">
+        <img src={asset('/brand/oddhers-horizontal-negativo.png')} alt="" width={1195} height={298} loading="lazy" />
+      </div>
       <div className="container footer__bottom">
         <p>© {year} ODDHERS. {site.creed}</p>
         <Link href="/aviso-de-privacidad" className="ulink">Aviso de privacidad</Link>

@@ -19,7 +19,7 @@ export default function EnfoquePage() {
         title="We don’t think _like the others._"
         lead="No es una pose. Es una forma de trabajar: entender antes de proponer, cuestionar antes de producir y medir antes de presumir."
       />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container creed">
           <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> Manifiesto</p>
           <div className="creed__text">
@@ -31,7 +31,7 @@ export default function EnfoquePage() {
         </div>
       </section>
       <Method showCta={false} />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container">
           <header className="section-head">
             <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> Dos formas de trabajar</p>

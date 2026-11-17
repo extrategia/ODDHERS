@@ -1,7 +1,10 @@
 import { Cta } from '@/components/ui/Cta';
 import { Words } from '@/components/ui/Words';
+import { Marquee } from '@/components/ui/Marquee';
 import { KnightStage } from '@/components/three/KnightStage';
 import { site } from '@/config/site';
+
+const services = ['Estrategia', 'Branding', 'Contenido', 'Video', 'Meta Ads', 'Google Ads', 'Inteligencia artificial'];
 
 export function Hero() {
   return (
@@ -12,8 +15,7 @@ export function Hero() {
           <span className="tick" aria-hidden="true" /> Firma de estrategia creativa · {site.location.city}, México
         </p>
         <h1 id="hero-title" className="display hero__title" data-reveal="words">
-          <span className="hero__line"><Words text="No necesitas más de lo mismo." /></span>
-          <span className="hero__line hero__line--alt"><Words text="Necesitas _otra forma de pensar._" start={6} /></span>
+          <Words text="No necesitas ~más de lo mismo.~ Necesitas *otra forma de pensar.*" />
         </h1>
         <div className="hero__foot">
           <p className="lead hero__lead" data-reveal="up" style={{ '--i': 5 } as React.CSSProperties}>
@@ -25,10 +27,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <a href="#desafio" className="scroll-cue" aria-label="Ir a la siguiente sección">
-        <span className="scroll-cue__path" aria-hidden="true" />
-        <span className="label">Scroll</span>
-      </a>
+      <Marquee className="hero__marquee" items={services} />
     </section>
   );
 }

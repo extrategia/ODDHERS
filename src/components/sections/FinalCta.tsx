@@ -2,6 +2,7 @@ import { Words } from '@/components/ui/Words';
 import { KnightMark } from '@/components/ui/KnightMark';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { WhatsAppOption } from '@/components/forms/WhatsAppOption';
+import { Marquee } from '@/components/ui/Marquee';
 
 export function FinalCta({ heading = 'h2' }: { heading?: 'h1' | 'h2' }) {
   const H = heading;
@@ -35,10 +36,11 @@ export function FinalCta({ heading = 'h2' }: { heading?: 'h1' | 'h2' }) {
           </div>
         </div>
 
-        <p className="final__sign" data-reveal="clip" lang="en">
-          <span>Your next move <span className="serif-accent">starts here.</span></span>
-        </p>
       </div>
+      <Marquee className="final__marquee" reverse>
+        <span className="marquee__item" lang="en">Your next move starts here <KnightMark className="marquee__mark" /></span>
+        <span className="marquee__item" lang="en">Your next move starts here <KnightMark className="marquee__mark" /></span>
+      </Marquee>
     </section>
   );
 }

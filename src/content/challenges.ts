@@ -11,6 +11,7 @@ export type Challenge = {
   formOption: string;
   /** Casilla destino del caballo en el tablero (columna, fila) de 6×6. */
   target: [number, number];
+  image: import('./images').ImageKey;
 };
 
 export const challenges: Challenge[] = [
@@ -25,6 +26,7 @@ export const challenges: Challenge[] = [
     cta: 'Exploremos tu estrategia de crecimiento',
     formOption: 'Conseguir más clientes',
     target: [4, 1],
+    image: 'analytics',
   },
   {
     slug: 'marca-no-destaca',
@@ -37,6 +39,7 @@ export const challenges: Challenge[] = [
     cta: 'Descubre una nueva estrategia',
     formOption: 'Mejorar mi marca',
     target: [1, 0],
+    image: 'board',
   },
   {
     slug: 'redes-sin-resultados',
@@ -49,6 +52,7 @@ export const challenges: Challenge[] = [
     cta: 'Revisemos tu contenido',
     formOption: 'Crear contenido',
     target: [5, 3],
+    image: 'team',
   },
   {
     slug: 'contenido-que-conecte',
@@ -61,6 +65,7 @@ export const challenges: Challenge[] = [
     cta: 'Hablemos de tu contenido',
     formOption: 'Crear contenido',
     target: [3, 0],
+    image: 'camera',
   },
   {
     slug: 'aprovechar-tecnologia',
@@ -73,6 +78,7 @@ export const challenges: Challenge[] = [
     cta: 'Exploremos dónde suma la tecnología',
     formOption: 'Incorporar IA',
     target: [5, 1],
+    image: 'code',
   },
   {
     slug: 'no-se-que-necesito',
@@ -85,6 +91,7 @@ export const challenges: Challenge[] = [
     cta: 'Encuentra tu siguiente movimiento',
     formOption: 'Necesito orientación',
     target: [2, 2],
+    image: 'knight',
   },
 ];
 

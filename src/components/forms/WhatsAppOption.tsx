@@ -1,4 +1,4 @@
-import { Cta } from '@/components/ui/Cta';
+import { KnightArrow } from '@/components/ui/Cta';
 import { WHATSAPP_DEFAULT_MESSAGE, whatsappUrl } from '@/config/site';
 
 export function WhatsAppOption() {
@@ -9,7 +9,10 @@ export function WhatsAppOption() {
   return (
     <>
       <blockquote className="option__msg">&ldquo;{WHATSAPP_DEFAULT_MESSAGE}&rdquo;</blockquote>
-      <Cta href={url} external track="whatsapp_cta">Abrir WhatsApp</Cta>
+      <a className="orb" href={url} target="_blank" rel="noopener noreferrer" data-magnetic="0.35" data-track="whatsapp_cta">
+        <span>Abrir WhatsApp</span>
+        <KnightArrow />
+      </a>
     </>
   );
 }

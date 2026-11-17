@@ -1,17 +1,11 @@
-'use client';
-
-import { useState } from 'react';
+import Link from 'next/link';
 import { solutions } from '@/content/solutions';
-import { Cta } from '@/components/ui/Cta';
-import { Glyph } from '@/components/ui/Glyph';
+import { image } from '@/content/images';
 import { Words } from '@/components/ui/Words';
+import { KnightArrow } from '@/components/ui/Cta';
 
-/**
- * Acordeón cinematográfico: cuatro paneles que se expanden.
- * Escritorio: horizontales (clic, teclado o hover). Móvil: verticales, con control táctil claro.
- */
+/** Retícula tipo "bento": cuatro tarjetas de distinto peso; cada una lleva a su solución. */
 export function Solutions() {
-  const [active, setActive] = useState(0);
   return (
     <section className="section solutions" data-theme="dark" aria-labelledby="soluciones-title">
       <div className="container">
@@ -27,49 +21,27 @@ export function Solutions() {
           </p>
         </header>
 
-        <div className="panels" data-reveal="up">
-          {solutions.map((s, i) => {
-            const open = i === active;
-            return (
-              <article
-                key={s.slug}
-                className={`panel${open ? ' is-open' : ''}`}
-                onMouseEnter={() => { if (window.matchMedia('(hover: hover) and (min-width: 1024px)').matches) setActive(i); }}
-              >
-                <h3 className="panel__heading">
-                  <button
-                    type="button"
-                    className="panel__tab"
-                    aria-expanded={open}
-                    aria-controls={`panel-${s.slug}`}
-                    id={`tab-${s.slug}`}
-                    onClick={() => setActive(i)}
-                  >
-                    <span className="panel__num">{s.number}</span>
-                    <span className="panel__name">{s.name}</span>
-                    <span className="panel__plus" aria-hidden="true" />
-                  </button>
-                </h3>
-                <div className="panel__body" id={`panel-${s.slug}`} role="region" aria-labelledby={`tab-${s.slug}`} inert={!open}>
-                  <div className="panel__content">
-                    <div className="panel__main">
-                      <p className="panel__for">{s.forWhom}</p>
-                      <p className="panel__quote">&ldquo;{s.quote}&rdquo;</p>
-                      <p className="panel__desc">{s.description}</p>
-                      <Cta href={`/soluciones/${s.slug}`} variant="ghost" track={`cta_solution_${s.slug}`}>{s.cta}</Cta>
-                    </div>
-                    <div className="panel__side">
-                      <Glyph kind={s.glyph} />
-                      <ul className="panel__caps">
-                        {s.capabilities.map((c) => <li key={c.name}>{c.name}</li>)}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+        <ul className="bento">
+          {solutions.map((s, i) => (
+            <li key={s.slug} className={`bento__item bento__item--${i + 1}`} data-reveal="up" style={{ '--i': i % 2 } as React.CSSProperties}>
+              <Link href={`/soluciones/${s.slug}`} className="tile" data-cursor="Ver" data-track={`cta_solution_${s.slug}`}>
+                {i !== 0 && <img className="tile__img" src={image(s.image).src} alt="" loading="lazy" decoding="async" />}
+                <span className="tile__top">
+                  <span className="tile__num">{s.number}</span>
+                  <span className="tile__go" aria-hidden="true"><KnightArrow /></span>
+                </span>
+                <span className="tile__body">
+                  <span className="tile__name">{s.name}</span>
+                  <span className="tile__for">{s.forWhom}</span>
+                  <span className="tile__quote">{s.quote}</span>
+                  <span className="tile__caps">
+                    {s.capabilities.slice(0, 4).map((c) => <span key={c.name}>{c.name}</span>)}
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@ export type Solution = {
   outcome: string;
   cta: string;
   glyph: 'compass' | 'frames' | 'steps' | 'nodes';
+  image: import('./images').ImageKey;
 };
 
 export const solutions: Solution[] = [
@@ -36,6 +37,7 @@ export const solutions: Solution[] = [
     outcome: 'Una marca con una posición clara y un plan para defenderla.',
     cta: 'Descubre una nueva estrategia',
     glyph: 'compass',
+    image: 'board',
   },
   {
     slug: 'content-experience',
@@ -61,6 +63,7 @@ export const solutions: Solution[] = [
     outcome: 'Contenido reconocible, con un propósito medible detrás de cada pieza.',
     cta: 'Hablemos de tu contenido',
     glyph: 'frames',
+    image: 'camera',
   },
   {
     slug: 'performance-growth',
@@ -86,6 +89,7 @@ export const solutions: Solution[] = [
     outcome: 'Un sistema de captación que puedes leer, cuestionar y mejorar.',
     cta: 'Exploremos tu estrategia de crecimiento',
     glyph: 'steps',
+    image: 'analytics',
   },
   {
     slug: 'ai-optimization',
@@ -110,6 +114,7 @@ export const solutions: Solution[] = [
     outcome: 'Tecnología al servicio de decisiones mejor informadas.',
     cta: 'Exploremos dónde suma la tecnología',
     glyph: 'nodes',
+    image: 'code',
   },
 ];
 

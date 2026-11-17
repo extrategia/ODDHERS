@@ -7,6 +7,7 @@ import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 import { getSolution, solutions } from '@/content/solutions';
 import { challenges } from '@/content/challenges';
 import { methodSteps } from '@/content/method';
+import { Media } from '@/components/ui/Media';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -33,8 +34,9 @@ export default async function SolutionPage({ params }: Props) {
         <p className="page-hero__quote" data-reveal="up">&ldquo;{s.quote}&rdquo;</p>
       </PageHero>
 
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container detail">
+          <Media name={s.image} ratio="21 / 9" decorative eager />
           <div className="detail__intro" data-reveal="up">
             <p className="label"><span className="tick" aria-hidden="true" /> Qué resolvemos</p>
             <p className="h2 detail__lead">{s.description}</p>

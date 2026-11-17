@@ -57,6 +57,7 @@ export function Header() {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    window.__lenis?.stop();
     const menu = menuRef.current!;
     const focusables = () =>
       [toggleRef.current!, ...Array.from(menu.querySelectorAll<HTMLElement>('a[href], button'))].filter(Boolean);
@@ -74,6 +75,7 @@ export function Header() {
     document.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = prev;
+      window.__lenis?.start();
       window.clearTimeout(t);
       document.removeEventListener('keydown', onKey);
     };
@@ -134,6 +136,7 @@ export function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menú de navegación"
+        data-lenis-prevent=""
         inert={!open}
       >
         <div className="menu__grid" aria-hidden="true" />

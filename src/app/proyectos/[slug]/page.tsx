@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/layout/PageHero';
 import { CtaBand } from '@/components/layout/CtaBand';
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
-import { ProjectCover } from '@/components/sections/Work';
+import { Media } from '@/components/ui/Media';
 import { getProject, projects } from '@/content/projects';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -29,9 +29,12 @@ export default async function ProjectPage({ params }: Props) {
     <>
       <BreadcrumbJsonLd items={[{ name: 'Inicio', path: '/' }, { name: 'Proyectos', path: '/proyectos/' }, { name: p.industry, path: `/proyectos/${p.slug}/` }]} />
       <PageHero label={`Experiencia ${p.number} · ${p.industry}`} title={p.title} lead={p.summary} />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container case">
-          <div className="case__cover cover cover--static" data-reveal="clip"><ProjectCover project={p} /></div>
+          <figure className="case__cover">
+            <Media name={p.image} ratio="21 / 9" eager />
+            {p.illustrative && <figcaption>Imagen ilustrativa. No corresponde a un proyecto específico.</figcaption>}
+          </figure>
           <dl className="case__facts" data-reveal="up">
             <div><dt className="label">Cliente</dt><dd>{p.client ?? 'Confidencial'}</dd></div>
             <div><dt className="label">Industria</dt><dd>{p.industry}</dd></div>

@@ -8,6 +8,7 @@ import { Cta } from '@/components/ui/Cta';
 import { Words } from '@/components/ui/Words';
 import { KNIGHT_PATH } from '@/lib/knight-shape';
 import { track } from '@/lib/analytics';
+import { image } from '@/content/images';
 
 const SIZE = 6;
 const ORIGIN: [number, number] = [0, 5];
@@ -54,7 +55,7 @@ export function Challenges() {
   const d = routePath(cells);
 
   return (
-    <section id="desafio" className="section challenges" data-theme="light" aria-labelledby="desafio-title">
+    <section id="desafio" className="section challenges" data-theme="dark" data-tone="soft" aria-labelledby="desafio-title">
       <div className="container">
         <header className="section-head">
           <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> 01 — El problema antes que el servicio</p>
@@ -112,37 +113,32 @@ export function Challenges() {
             })}
           </ol>
 
-          <aside className="challenges__visual" aria-hidden="true" data-reveal="up">
-            <div className="board">
-              <svg viewBox="0 0 600 600" focusable="false">
-                <g className="board__grid">
-                  {Array.from({ length: SIZE + 1 }, (_, i) => (
-                    <path key={i} d={`M${i * 100} 0V600M0 ${i * 100}H600`} />
+          <aside className="challenges__visual" data-reveal="up">
+            <div className="shot">
+              {challenges.map((c, i) => (
+                <img key={c.slug} className={`shot__img${i === active ? ' is-on' : ''}`} src={image(c.image).src} alt="" loading="lazy" decoding="async" />
+              ))}
+              <span className="shot__tag">Desafío {current.number}</span>
+              <div className="board" aria-hidden="true">
+                <svg viewBox="0 0 600 600" focusable="false">
+                  <g className="board__grid">
+                    {Array.from({ length: SIZE + 1 }, (_, i) => (
+                      <path key={i} d={`M${i * 100} 0V600M0 ${i * 100}H600`} />
+                    ))}
+                  </g>
+                  {/* key fuerza a reiniciar la animación del trazo al cambiar de desafío */}
+                  <path key={current.slug} className="board__route" d={d} pathLength={1} />
+                  {cells.slice(1, -1).map((c, i) => (
+                    <rect key={`${current.slug}-${i}`} className="board__stop" x={c[0] * 100 + 38} y={c[1] * 100 + 38} width="24" height="24" />
                   ))}
-                </g>
-                <g className="board__dots">
-                  {Array.from({ length: SIZE * SIZE }, (_, i) => (
-                    <rect key={i} x={(i % SIZE) * 100 + 47} y={Math.floor(i / SIZE) * 100 + 47} width="6" height="6" />
-                  ))}
-                </g>
-                {/* key fuerza a reiniciar la animación del trazo al cambiar de desafío */}
-                <path key={current.slug} className="board__route" d={d} pathLength={1} />
-                {cells.slice(1, -1).map((c, i) => (
-                  <rect key={`${current.slug}-${i}`} className="board__stop" x={c[0] * 100 + 41} y={c[1] * 100 + 41} width="18" height="18" />
-                ))}
-                <rect className="board__origin" x={ORIGIN[0] * 100 + 38} y={ORIGIN[1] * 100 + 38} width="24" height="24" />
-                <g
-                  className="board__knight"
-                  style={{ transform: `translate(${current.target[0] * 100}px, ${current.target[1] * 100}px)` }}
-                >
-                  <rect className="board__cell" x="4" y="4" width="92" height="92" />
-                  <g transform="translate(27 14) scale(0.072)"><path d={KNIGHT_PATH} /></g>
-                </g>
-              </svg>
-              <p className="board__caption">
-                <span className="label">Desafío {current.number}</span>
-                <span>{cells.length - 1} {cells.length - 1 === 1 ? 'movimiento' : 'movimientos'} hasta una primera respuesta</span>
-              </p>
+                  <rect className="board__origin" x={ORIGIN[0] * 100 + 36} y={ORIGIN[1] * 100 + 36} width="28" height="28" />
+                  <g className="board__knight" style={{ transform: `translate(${current.target[0] * 100}px, ${current.target[1] * 100}px)` }}>
+                    <rect className="board__cell" x="4" y="4" width="92" height="92" rx="10" />
+                    <g transform="translate(27 14) scale(0.072)"><path d={KNIGHT_PATH} /></g>
+                  </g>
+                </svg>
+                <p className="board__caption">{cells.length - 1} {cells.length - 1 === 1 ? 'movimiento' : 'movimientos'} hasta una primera respuesta</p>
+              </div>
             </div>
             <p className="challenges__note">
               Esto es una orientación inicial, no un diagnóstico. El diagnóstico de verdad empieza con una conversación y con tus datos.

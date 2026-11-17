@@ -1,0 +1,15 @@
+{
+  "_nota": "Fotografías de stock (Unsplash, licencia gratuita) usadas como imágenes provisionales. Reemplazar por material propio: basta con poner un archivo con el mismo nombre en public/img/ y borrar la entrada de aquí.",
+  "images": {
+    "knight": { "id": "27LH_0jXKYI", "file": "knight.jpg", "alt": "Caballo de ajedrez negro sobre un tablero, en blanco y negro" },
+    "board": { "id": "ROsqmHp-KVM", "file": "board.jpg", "alt": "Piezas de ajedrez sobre un tablero con fondo oscuro" },
+    "team": { "id": "QiUWAuFleVg", "file": "team.jpg", "alt": "Una persona presenta ideas en un pizarrón frente a su equipo" },
+    "house": { "id": "nc0YFqQy38U", "file": "house.jpg", "alt": "Casa moderna con las ventanas iluminadas de noche" },
+    "boots": { "id": "ekO0559lcaM", "file": "boots.jpg", "alt": "Botas vaqueras de piel sobre un piso de madera oscura" },
+    "shirt": { "id": "G8M2vkn1ADA", "file": "shirt.jpg", "alt": "Hombre con camisa de vestir negra" },
+    "mics": { "id": "xkAJ3vcQQb0", "file": "mics.jpg", "alt": "Micrófonos negros preparados para una conferencia" },
+    "camera": { "id": "kbd1oAf-9Ms", "file": "camera.jpg", "alt": "Persona grabando con una cámara sobre un tripié" },
+    "analytics": { "id": "JKUTrJ4vK00", "file": "analytics.jpg", "alt": "Gráficas de desempeño en la pantalla de una laptop" },
+    "code": { "id": "LrxSl4ZxoRs", "file": "code.jpg", "alt": "Laptop con código en pantalla sobre un escritorio" }
+  }
+}

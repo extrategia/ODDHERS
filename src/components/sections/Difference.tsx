@@ -34,7 +34,7 @@ export function OtherPath() {
 export function DifferenceTable() {
   return (
     <div className="versus" data-reveal="up">
-      <div className="versus__col versus__col--a">
+      <div className="versus__col versus__col--a" data-theme="dark">
         <p className="label">Enfoque convencional</p>
         <ul>{difference.conventional.map((t) => <li key={t}>{t}</li>)}</ul>
       </div>
@@ -48,7 +48,7 @@ export function DifferenceTable() {
 
 export function Difference() {
   return (
-    <section className="section difference" data-theme="light" aria-labelledby="diferencia-title">
+    <section className="section difference" data-theme="dark" data-tone="soft" aria-labelledby="diferencia-title">
       <div className="container">
         <header className="section-head">
           <p className="label" data-reveal="up"><span className="tick" aria-hidden="true" /> 06 — Diferenciación</p>

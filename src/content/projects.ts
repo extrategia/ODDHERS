@@ -4,7 +4,8 @@
  * Regla: aquí solo va información real y autorizada.
  * - `client`: nombre del cliente SOLO si autorizó aparecer. Si no, dejar null.
  * - `results`: cifras SOLO si están documentadas y autorizadas. Si no, dejar [].
- * - `media`: rutas dentro de /public (imagen o video propios). Si no hay, se muestra una portada tipográfica.
+ * - `image`: fotografía de portada. Hoy son imágenes de stock ILUSTRATIVAS (ver content/stock.json);
+ *   mientras `illustrative` sea true, el sitio lo indica en la portada. Al poner material real, cambiar a false.
  */
 export type Project = {
   slug: string;
@@ -17,8 +18,8 @@ export type Project = {
   solution: string;
   services: string[];
   results: { value: string; label: string }[];
-  media: { type: 'image' | 'video'; src: string; alt: string }[];
-  size: 'wide' | 'tall' | 'regular';
+  image: import('./images').ImageKey;
+  illustrative: boolean;
 };
 
 export const projects: Project[] = [
@@ -35,8 +36,8 @@ export const projects: Project[] = [
       'Campañas en Meta Ads segmentadas por tipo de propiedad y perfil de comprador, contenido de marca para cada asesor o desarrollo y un seguimiento ordenado de los prospectos.',
     services: ['Meta Ads', 'Captación de prospectos', 'Contenido para redes', 'Producción de video'],
     results: [],
-    media: [],
-    size: 'wide',
+    image: 'house',
+    illustrative: true,
   },
   {
     slug: 'calzado',
@@ -51,8 +52,8 @@ export const projects: Project[] = [
       'Desarrollo de identidad, catálogo y campañas visuales que ponen el producto al centro, con pauta digital para llevarlo a los compradores correctos.',
     services: ['Diseño de marca', 'Contenido para redes', 'Meta Ads', 'Producción de video'],
     results: [],
-    media: [],
-    size: 'tall',
+    image: 'boots',
+    illustrative: true,
   },
   {
     slug: 'moda',
@@ -67,8 +68,8 @@ export const projects: Project[] = [
       'Contenido visual consistente, comunicación de marca y campañas orientadas a venta en canales digitales.',
     services: ['Comunicación de marca', 'Diseño de publicaciones', 'Estrategia publicitaria'],
     results: [],
-    media: [],
-    size: 'regular',
+    image: 'shirt',
+    illustrative: true,
   },
   {
     slug: 'comunicacion-politica',
@@ -83,8 +84,8 @@ export const projects: Project[] = [
       'Estrategia de contenidos, gestión de canales digitales y respuesta oportuna ante situaciones sensibles.',
     services: ['Estrategia de marketing', 'Contenido para redes', 'Asesoría digital'],
     results: [],
-    media: [],
-    size: 'regular',
+    image: 'mics',
+    illustrative: true,
   },
 ];
 

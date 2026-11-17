@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHero } from '@/components/layout/PageHero';
 import { CtaBand } from '@/components/layout/CtaBand';
-import { Glyph } from '@/components/ui/Glyph';
+import { image } from '@/content/images';
 import { KnightArrow } from '@/components/ui/Cta';
 import { solutions } from '@/content/solutions';
 
@@ -20,19 +20,19 @@ export default function SolucionesPage() {
         title="Primero tu necesidad. _Después nuestra capacidad para resolverla._"
         lead="Organizamos lo que hacemos alrededor de cuatro tipos de problema. Elige el que se parece al tuyo; si no estás seguro, empezamos por un diagnóstico."
       />
-      <section className="section" data-theme="light">
+      <section className="section" data-theme="dark" data-tone="soft">
         <div className="container">
           <ul className="index-list">
             {solutions.map((s) => (
               <li key={s.slug} data-reveal="up">
-                <Link href={`/soluciones/${s.slug}`} className="index-row">
+                <Link href={`/soluciones/${s.slug}`} className="index-row" data-cursor="Ver">
                   <span className="index-row__num">{s.number}</span>
                   <span className="index-row__main">
                     <span className="h2">{s.name}</span>
                     <span className="index-row__for">{s.forWhom}</span>
                     <span className="index-row__caps">{s.capabilities.map((c) => c.name).join(' · ')}</span>
                   </span>
-                  <span className="index-row__glyph"><Glyph kind={s.glyph} /></span>
+                  <span className="index-row__img"><img src={image(s.image).src} alt="" loading="lazy" decoding="async" /></span>
                   <span className="index-row__go" aria-hidden="true"><KnightArrow /></span>
                 </Link>
               </li>
