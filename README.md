@@ -105,14 +105,15 @@ Agregar una solución o un proyecto nuevo crea su página automáticamente (`gen
 
 El sitio se exporta como HTML estático (`/out`), así que funciona en cualquier hosting.
 
-**GitHub Pages** (donde vive el sitio anterior): ya está incluido `.github/workflows/deploy.yml`.
+**GitHub Pages** (repositorio `extrategia/ODDHERS`): ya está incluido `.github/workflows/deploy.yml`.
 
-1. Sube este proyecto a un repositorio.
-2. En *Settings → Pages*, elige **Source: GitHub Actions**.
-3. En *Settings → Secrets and variables → Actions → Variables*, crea las variables de `.env.example`
-   (`NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_WHATSAPP`, etc.).
-   Si no usarás dominio propio, define `NEXT_PUBLIC_BASE_PATH=/nombre-del-repo`.
-4. Cada push a `main` publica el sitio.
+Cada push a `main` compila el sitio y publica la carpeta `/out` en la rama `gh-pages`,
+que es la que sirve GitHub Pages (*Settings → Pages → Deploy from a branch → gh-pages*).
+
+El flujo trae valores por defecto para la URL, la subcarpeta `/ODDHERS` y el WhatsApp. Para cambiarlos
+o agregar los demás (correo, redes, endpoint del formulario, analítica), crea variables con los nombres de
+`.env.example` en *Settings → Secrets and variables → Actions → Variables*.
+Con dominio propio: `NEXT_PUBLIC_SITE_URL=https://tu-dominio.com` y `NEXT_PUBLIC_BASE_PATH` vacío.
 
 **Vercel / Netlify**: importar el repositorio, definir las variables de entorno y listo (comando `npm run build`, carpeta `out`).
 
