@@ -1,15 +1,65 @@
 {
   "_nota": "Fotografías de stock (Unsplash, licencia gratuita) usadas como imágenes provisionales. Reemplazar por material propio: basta con poner un archivo con el mismo nombre en public/img/ y borrar la entrada de aquí.",
   "images": {
-    "knight": { "id": "27LH_0jXKYI", "file": "knight.jpg", "alt": "Caballo de ajedrez negro sobre un tablero, en blanco y negro" },
-    "board": { "id": "ROsqmHp-KVM", "file": "board.jpg", "alt": "Piezas de ajedrez sobre un tablero con fondo oscuro" },
-    "team": { "id": "QiUWAuFleVg", "file": "team.jpg", "alt": "Una persona presenta ideas en un pizarrón frente a su equipo" },
-    "house": { "id": "nc0YFqQy38U", "file": "house.jpg", "alt": "Casa moderna con las ventanas iluminadas de noche" },
-    "boots": { "id": "ekO0559lcaM", "file": "boots.jpg", "alt": "Botas vaqueras de piel sobre un piso de madera oscura" },
-    "shirt": { "id": "G8M2vkn1ADA", "file": "shirt.jpg", "alt": "Hombre con camisa de vestir negra" },
-    "mics": { "id": "xkAJ3vcQQb0", "file": "mics.jpg", "alt": "Micrófonos negros preparados para una conferencia" },
-    "camera": { "id": "kbd1oAf-9Ms", "file": "camera.jpg", "alt": "Persona grabando con una cámara sobre un tripié" },
-    "analytics": { "id": "JKUTrJ4vK00", "file": "analytics.jpg", "alt": "Gráficas de desempeño en la pantalla de una laptop" },
-    "code": { "id": "LrxSl4ZxoRs", "file": "code.jpg", "alt": "Laptop con código en pantalla sobre un escritorio" }
+    "knight": {
+      "id": "27LH_0jXKYI",
+      "file": "knight.jpg",
+      "alt": "Caballo de ajedrez negro sobre un tablero, en blanco y negro",
+      "photo": "photo-1560174038-da43ac74f01b"
+    },
+    "board": {
+      "id": "ROsqmHp-KVM",
+      "file": "board.jpg",
+      "alt": "Piezas de ajedrez sobre un tablero con fondo oscuro",
+      "photo": "photo-1764105720608-2dc0dfbaeeb3"
+    },
+    "team": {
+      "id": "QiUWAuFleVg",
+      "file": "team.jpg",
+      "alt": "Una persona presenta ideas en un pizarrón frente a su equipo",
+      "photo": "photo-1758873269013-d914addd5d3b"
+    },
+    "house": {
+      "id": "nc0YFqQy38U",
+      "file": "house.jpg",
+      "alt": "Casa moderna con las ventanas iluminadas de noche",
+      "photo": "photo-1757840589823-5e074cc2bab6"
+    },
+    "boots": {
+      "id": "ekO0559lcaM",
+      "file": "boots.jpg",
+      "alt": "Botas vaqueras de piel sobre un piso de madera oscura",
+      "photo": "photo-1792271057916-defd0178f4a2"
+    },
+    "shirt": {
+      "id": "G8M2vkn1ADA",
+      "file": "shirt.jpg",
+      "alt": "Hombre con camisa de vestir negra",
+      "photo": "photo-1552080084-f86b99bd1d29"
+    },
+    "mics": {
+      "id": "xkAJ3vcQQb0",
+      "file": "mics.jpg",
+      "alt": "Micrófonos negros preparados para una conferencia",
+      "photo": "photo-1555201441-7b166836415d"
+    },
+    "camera": {
+      "id": "kbd1oAf-9Ms",
+      "file": "camera.jpg",
+      "alt": "Persona grabando con una cámara sobre un tripié",
+      "photo": "photo-1625690303837-654c9666d2d0"
+    },
+    "analytics": {
+      "id": "JKUTrJ4vK00",
+      "file": "analytics.jpg",
+      "alt": "Gráficas de desempeño en la pantalla de una laptop",
+      "photo": "photo-1551288049-bebda4e38f71"
+    },
+    "code": {
+      "id": "LrxSl4ZxoRs",
+      "file": "code.jpg",
+      "alt": "Laptop con código en pantalla sobre un escritorio",
+      "photo": "photo-1607705703571-c5a8695f18f6"
+    }
   }
 }

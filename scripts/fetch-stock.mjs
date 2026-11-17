@@ -8,11 +8,11 @@ const dir = new URL('../public/img/', import.meta.url);
 await mkdir(dir, { recursive: true });
 
 let failed = 0;
-for (const [key, { id, file }] of Object.entries(images)) {
+for (const [key, { id, photo, file }] of Object.entries(images)) {
   const target = new URL(file, dir);
   try { await access(target); console.log(`= ${file} (ya existe)`); continue; } catch {}
   try {
-    const res = await fetch(`https://unsplash.com/photos/${id}/download?w=1800`, { redirect: 'follow' });
+    const res = await fetch(`https://images.unsplash.com/${photo}?w=1800&q=72&fm=jpg&fit=crop`, { redirect: 'follow' });
     if (!res.ok || !(res.headers.get('content-type') || '').startsWith('image/')) throw new Error(`HTTP ${res.status}`);
     await writeFile(target, Buffer.from(await res.arrayBuffer()));
     console.log(`+ ${file}`);
