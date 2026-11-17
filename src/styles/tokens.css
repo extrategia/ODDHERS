@@ -1,0 +1,91 @@
+/* ==========================================================================
+   ODDHERS — Design tokens
+   Fuente única de verdad para color, tipografía, espacio y movimiento.
+   ========================================================================== */
+:root {
+  /* Color: los tres oficiales y sus variaciones tonales */
+  --navy: #122046;
+  --navy-950: #0a1330;
+  --navy-900: #0d1838;
+  --navy-700: #17285a;
+  --navy-500: #2b3f7a;
+  --lime: #c8ff3d;
+  --lime-700: #a5d927;
+  --bone: #f5f5f0;
+  --bone-200: #ebebe3;
+  --bone-300: #dcdcd2;
+  --danger: #ff8a7a;
+  --danger-on-light: #a3261a;
+
+  /* Tipografía */
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+
+  --fs-display: clamp(2.5rem, 1.1rem + 5.4vw, 6.25rem);
+  --fs-h1: clamp(2rem, 1.1rem + 3.4vw, 4.25rem);
+  --fs-h2: clamp(1.45rem, 1.05rem + 1.5vw, 2.4rem);
+  --fs-h3: clamp(1.125rem, 1rem + 0.45vw, 1.4rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --fs-body: clamp(0.975rem, 0.95rem + 0.15vw, 1.0625rem);
+  --fs-small: 0.875rem;
+  --fs-label: 0.72rem;
+
+  /* Espacio y retícula */
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 4rem);
+  --max: 1600px;
+  --space-section: clamp(4.5rem, 2.5rem + 8vw, 10rem);
+  --space-head: clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
+  --header-h: 72px;
+
+  /* Movimiento: micro 150–300 · componente 300–650 · revelación 600–1100 */
+  --dur-micro: 200ms;
+  --dur-comp: 520ms;
+  --dur-reveal: 900ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-knight: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* Temas de sección: cada sección declara data-theme y hereda estas variables */
+[data-theme='dark'] {
+  --bg: var(--navy);
+  --fg: var(--bone);
+  --muted: rgba(245, 245, 240, 0.72);
+  --line: rgba(245, 245, 240, 0.16);
+  --line-strong: rgba(245, 245, 240, 0.4);
+  --accent: var(--lime);
+  --surface: var(--navy-700);
+  --cta-bg: var(--lime);
+  --cta-fg: var(--navy);
+  --cta-hover-bg: var(--bone);
+  --focus: var(--lime);
+  --error: var(--danger);
+  color-scheme: dark;
+}
+[data-theme='dark'][data-tone='deep'] {
+  --bg: var(--navy-950);
+  --surface: var(--navy-900);
+}
+[data-theme='light'] {
+  --bg: var(--bone);
+  --fg: var(--navy);
+  --muted: rgba(18, 32, 70, 0.74);
+  --line: rgba(18, 32, 70, 0.16);
+  --line-strong: rgba(18, 32, 70, 0.45);
+  --accent: var(--navy);
+  --surface: var(--bone-200);
+  --cta-bg: var(--navy);
+  --cta-fg: var(--bone);
+  --cta-hover-bg: var(--navy-500);
+  --focus: var(--navy);
+  --error: var(--danger-on-light);
+  color-scheme: light;
+}
+[data-theme='light'][data-tone='alt'] {
+  --bg: var(--bone-200);
+  --surface: var(--bone-300);
+}
+
+@media (max-width: 767px) {
+  :root { --header-h: 60px; }
+}
