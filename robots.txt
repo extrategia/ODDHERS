@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://extrategia.github.io/ODDHERS/sitemap.xml
